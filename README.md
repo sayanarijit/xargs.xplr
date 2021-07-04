@@ -1,13 +1,12 @@
-xplr plugin template
-====================
+[![xplr-xargs.gif](https://s6.gifyu.com/images/xplr-xargs.gif)](https://gifyu.com/image/A1Eg)
 
-Use this template to [write your own xplr plugin](https://arijitbasu.in/xplr/en/writing-plugins.html).
+Batch execute commands on the focused or selected files using `xargs`.
 
 
 Requirements
 ------------
 
-- Some tool
+- [xargs](https://www.gnu.org/software/findutils/manual/html_node/find_html/xargs-options.html)
 
 
 Installation
@@ -26,26 +25,28 @@ Installation
   ```bash
   mkdir -p ~/.config/xplr/plugins
 
-  git clone https://github.com/me/{plugin}.xplr ~/.config/xplr/plugins/{plugin}
+  git clone https://github.com/sayanarijit/xargs.xplr ~/.config/xplr/plugins/xargs
   ```
 
 - Require the module in `~/.config/xplr/init.lua`
 
   ```lua
-  require("{plugin}").setup()
+  require("xargs").setup()
   
   -- Or
   
-  require("{plugin}").setup{
-    mode = "action",
-    key = ":",
+  require("xargs").setup{
+    mode = "default",
+    key = "X",
+    placeholder = "{}",
   }
 
-  -- Type `::` and enjoy.
+  -- Type `X` for xarsg mode.
   ```
 
 
 Features
 --------
 
-- Some cool feature
+- Run multiple commands without having to reselect the paths.
+- Selection will clear when you leave the mode.
