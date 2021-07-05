@@ -26,9 +26,7 @@ local function create_xargs_mode(custom, mode, command)
         enter = {
           help = "execute",
           messages = {
-            {
-              BashExec = command
-            },
+            { BashExec = command },
             { SetInputBuffer = "" },
           }
         },
