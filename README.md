@@ -65,6 +65,6 @@ Features
 
 - Run multiple commands without having to reselect the paths.
 - Selection will clear when you leave the mode.
-- Single map mode will all pass the paths as arguments to a single command.
+- Single map mode will pass all the paths as arguments to a single command.
 - Multi map mode will run the command for each path by substituting the
   placeholder with the path.
