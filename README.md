@@ -53,6 +53,7 @@ Installation
     mode = "default",
     key = "X",
     placeholder = "{}",
+    shell = "bash",
   }
 
   -- Type `Xs` for xargs single map mode.
@@ -68,3 +69,4 @@ Features
 - Single map mode will pass all the paths as arguments to a single command.
 - Multi map mode will run the command for each path by substituting the
   placeholder with the path.
+- Multiline map will run the command inside the specified shell.
