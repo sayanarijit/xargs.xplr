@@ -1,6 +1,20 @@
-[![xplr-xargs.gif](https://s6.gifyu.com/images/xplr-xargs.gif)](https://gifyu.com/image/A1Eg)
-
 Batch execute commands on the focused or selected files using `xargs`.
+
+Usage
+-----
+
+### Single map mode
+
+Maps all the paths as arguments to a single command.
+
+[![xplr-xargs-single.gif](https://s6.gifyu.com/images/xplr-xargs-single.gif)](https://gifyu.com/image/A156)
+
+### Multi map mode
+
+Maps each path to the given command by substituting the placeholder with the
+path.
+
+[![xplr-xargs-multi.gif](https://s6.gifyu.com/images/xplr-xargs-multi.gif)](https://gifyu.com/image/A1tP)
 
 
 Requirements
@@ -41,7 +55,8 @@ Installation
     placeholder = "{}",
   }
 
-  -- Type `X` for xarsg mode.
+  -- Type `Xs` for xargs single map mode.
+  -- Type `Xm` for xargs multi map mode.
   ```
 
 
@@ -50,3 +65,6 @@ Features
 
 - Run multiple commands without having to reselect the paths.
 - Selection will clear when you leave the mode.
+- Single map mode will all pass the paths as arguments to a single command.
+- Multi map mode will run the command for each path by substituting the
+  placeholder with the path.
