@@ -31,7 +31,6 @@ local function create_xargs_mode(custom, mode, command)
           help = "execute",
           messages = {
             { BashExec = command },
-            { SetInputBuffer = "" },
           }
         },
         backspace = {
@@ -115,8 +114,13 @@ local function setup(args)
     xplr.config.modes.custom,
     "single",
     [===[
-    xargs -r -a "$XPLR_PIPE_RESULT_OUT" ${XPLR_INPUT_BUFFER:?}
-    read -p "[press enter to continue]"
+    if [ "$XPLR_INPUT_BUFFER" ]; then
+      echo 'SetInputBuffer: ""' >> "${XPLR_PIPE_MSG_IN:?}"
+      xargs -r -a "$XPLR_PIPE_RESULT_OUT" ${XPLR_INPUT_BUFFER:?}
+      read -p "[press enter to continue]"
+    else
+      echo PopMode >> "${XPLR_PIPE_MSG_IN:?}"
+    fi
     ]===]
   )
 
@@ -124,8 +128,13 @@ local function setup(args)
     xplr.config.modes.custom,
     "multi",
     [===[
-    xargs -I ]===] .. args.placeholder .. [===[ -r -a "$XPLR_PIPE_RESULT_OUT" ]===] .. args.shell .. [===[ -c "${XPLR_INPUT_BUFFER:?}"
-    read -p "[press enter to continue]"
+    if [ "$XPLR_INPUT_BUFFER" ]; then
+      echo 'SetInputBuffer: ""' >> "${XPLR_PIPE_MSG_IN:?}"
+      xargs -I ]===] .. args.placeholder .. [===[ -r -a "$XPLR_PIPE_RESULT_OUT" ]===] .. args.shell .. [===[ -c "${XPLR_INPUT_BUFFER:?}"
+      read -p "[press enter to continue]"
+    else
+      echo PopMode >> "${XPLR_PIPE_MSG_IN:?}"
+    fi
     ]===]
   )
 end
