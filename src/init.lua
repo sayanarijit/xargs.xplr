@@ -15,6 +15,10 @@ local function parse_args(args)
     args.placeholder = "{}"
   end
 
+  if args.shell == nil then
+    args.shell = "bash"
+  end
+
   return args
 end
 
@@ -120,7 +124,7 @@ local function setup(args)
     xplr.config.modes.custom,
     "multi",
     [===[
-    xargs -I ]===] .. args.placeholder .. [===[ -r -a "$XPLR_PIPE_RESULT_OUT" ${XPLR_INPUT_BUFFER:?}
+    xargs -I ]===] .. args.placeholder .. [===[ -r -a "$XPLR_PIPE_RESULT_OUT" ]===] .. args.shell .. [===[ -c "${XPLR_INPUT_BUFFER:?}"
     read -p "[press enter to continue]"
     ]===]
   )
