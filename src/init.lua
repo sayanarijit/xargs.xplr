@@ -120,6 +120,7 @@ local function setup(args)
       read -p "[press enter to continue]"
     else
       echo PopMode >> "${XPLR_PIPE_MSG_IN:?}"
+      echo ClearSelection >> "${XPLR_PIPE_MSG_IN:?}"
     fi
     ]===]
   )
@@ -134,6 +135,7 @@ local function setup(args)
       read -p "[press enter to continue]"
     else
       echo PopMode >> "${XPLR_PIPE_MSG_IN:?}"
+      echo ClearSelection >> "${XPLR_PIPE_MSG_IN:?}"
     fi
     ]===]
   )
