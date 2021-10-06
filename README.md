@@ -1,5 +1,9 @@
 Batch execute commands on the focused or selected files using `xargs`.
 
+> **NOTE:** You might want to check out a better version of this plugin:
+> [**map.xplr**](https://github.com/sayanarijit/map.xplr)
+
+
 Usage
 -----
 
