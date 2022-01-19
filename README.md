@@ -3,9 +3,7 @@ Batch execute commands on the focused or selected files using `xargs`.
 > **NOTE:** You might want to check out a better version of this plugin:
 > [**map.xplr**](https://github.com/sayanarijit/map.xplr)
 
-
-Usage
------
+## Usage
 
 ### Single map mode
 
@@ -20,22 +18,23 @@ path.
 
 [![xplr-xargs-multi.gif](https://s6.gifyu.com/images/xplr-xargs-multi.gif)](https://gifyu.com/image/A1tP)
 
-
-Requirements
-------------
+## Requirements
 
 - [xargs](https://www.gnu.org/software/findutils/manual/html_node/find_html/xargs-options.html)
 
-
-Installation
-------------
+## Installation
 
 ### Install manually
 
 - Add the following line in `~/.config/xplr/init.lua`
 
   ```lua
-  package.path = os.getenv("HOME") .. '/.config/xplr/plugins/?/src/init.lua'
+  local home = os.getenv("HOME")
+  package.path = home
+  .. "/.config/xplr/plugins/?/init.lua;"
+  .. home
+  .. "/.config/xplr/plugins/?.lua;"
+  .. package.path
   ```
 
 - Clone the plugin
@@ -50,9 +49,9 @@ Installation
 
   ```lua
   require("xargs").setup()
-  
+
   -- Or
-  
+
   require("xargs").setup{
     mode = "default",
     key = "X",
@@ -64,9 +63,7 @@ Installation
   -- Type `Xm` for xargs multi map mode.
   ```
 
-
-Features
---------
+## Features
 
 - Run multiple commands without having to reselect the paths.
 - Selection will clear when you leave the mode.
